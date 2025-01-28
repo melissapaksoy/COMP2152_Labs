@@ -159,14 +159,14 @@ print("Player rolled " + str(m_health_points) + " health points for the monster"
 # Lab04 - Q5 - item 1
 print("!! You found a loot bag! Look inside to find 2 items:")
 input("Roll for first item (Press Enter)")
-lootRoll =random.choice(1, len(loot_options) +1)
+lootRoll =random.choice(range(1, len(loot_options) +1))
 loot = loot_options.pop(lootRoll -1)
 belt.append(loot)
 print("Your belt: ", belt)
 
 # Lab04 - Q6 - item 2
 input("Roll for first item (Press Enter)")
-lootRoll = random.choice(1, len(loot_options) + 1)
+lootRoll = random.choice(range(1, len(loot_options) + 1))
 loot = loot_options.pop(lootRoll - 1)
 belt.append(loot)
 print("Your belt: ", belt)
@@ -176,6 +176,17 @@ print("You're neat, so organize your belt alphabetically")
 belt.sort()
 print("Your belt: ", belt)
 
+# Lab04 - Q8 - use the belt
+print("You see a monster in the distance! So, quickly use your first item:")
+first_item = belt.pop(0)
+if first_item in good_loot_options:
+    health_points = min(6, (health_points + 2))
+    print("You used " + first_item + " to hurt  your health to " + str(health_points))
+elif first_item in bad_loot_options:
+        health_points = max(0, (health_points - 2))
+        print("You used " + first_item + " to hurt your health to " + str(health_points))
+else:
+    print("You used "+ first_item + "but it's not helpful")  
 input("Analyze the roll (Press enter)")
 # Compare Player vs Monster's strength
 print("--- You are matched in strength: " + str(combat_strength == m_combat_strength))
