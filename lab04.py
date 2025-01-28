@@ -204,7 +204,7 @@ power_roll = random.choice(["Fire Magic", "Freezing Magic", "Super Hearing"])
 # Lab04 - Q3
 # Increase the Monster's Combat Strength by it's power, without going over 6
 m_combat_strength = min(6, (m_combat_strength + monster_powers[power_roll]))
-print("The monster combat strength is now" + str(m_combat_strength) + " using the " + power_roll + " magic power.")
+print("The monster combat strength is now " + str(m_combat_strength) + " using the " + power_roll + " magic power.")
 
 # Loop while the monster and the player are alive. Call fight sequence functions
 print("You meet the monster. FIGHT!!")
