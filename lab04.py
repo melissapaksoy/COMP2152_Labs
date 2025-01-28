@@ -76,10 +76,20 @@ weapons = ["Fist", "Knife", "Club", "Gun", "Bomb", "Nuclear Bomb"]
 for weapon in weapons:
     print(weapon)
 
+
 # Define the Loot
 loot_options = ["Health Potion", "Poison Potion", "Secret Note", "Leather Boots", "Flimsy Gloves"]
 good_loot_options = ["Health Potion", "Leather Boots"]
 bad_loot_options = ["Poison Potion"]
+
+
+#Lab04 - Q1
+#Define the Monster Power
+monster_powers = {
+    "Fire Magic": 2,
+    "Freezing Magic": 4,
+    "Super Hearing": 6
+}
 
 # Define the number of stars awarded to the Player
 num_stars = 0
@@ -150,6 +160,9 @@ print("--- You are matched in strength: " + str(combat_strength == m_combat_stre
 
 # Check the Player's overall strength and health
 print("--- You have a strong player: " + str((combat_strength + health_points) >= 15))
+
+
+input("Roll the dice for the monster's power (Press enter)")
 
 # Loop while the monster and the player are alive. Call fight sequence functions
 print("You meet the monster. FIGHT!!")
