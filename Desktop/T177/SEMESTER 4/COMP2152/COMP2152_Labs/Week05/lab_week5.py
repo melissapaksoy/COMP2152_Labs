@@ -118,14 +118,15 @@ if not input_invalid:
     input("Roll for first item (enter)")
 
     # Lab 5 - Question 4: Collect Loot First time
-    
+    loot_options, belt = functions_lab05.collect_loot(loot_options, belt)
+
     print("    ------------------------------------------------------------------")
     print("    |", end="    ")
     input("Roll for second item (Press enter)")
 
     # Lab 5 - Question 4: Collect Loot Second time
+    loot_options, belt = functions_lab05.collect_loot(loot_options, belt)
     
-
     print("    |    You're super neat, so you organize your belt alphabetically:")
     belt.sort()
     print("    |    Your belt: ", belt)
