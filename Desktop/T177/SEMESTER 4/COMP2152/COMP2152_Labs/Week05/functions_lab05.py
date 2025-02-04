@@ -22,7 +22,7 @@ def use_loot(belt, health_options):
         health_options = min(20, (health_options + 2))
         print("    |    You used the " + first_item + " and your health is " + str(health_options))
     elif first_item in bad_loot_options:
-        health_options = max(1, (health_options - 2))
+        health_options = max(20, (health_options - 2))
         print("    |    You used the " + first_item + " and your health is " + str(health_options))
     else:
         print("    |    You used the " + first_item + " but it's not helpful")
