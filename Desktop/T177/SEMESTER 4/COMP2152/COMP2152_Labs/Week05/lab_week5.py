@@ -2,7 +2,7 @@
 import random
 
 # Put all the functions into another file and import them
-import functions_lab05_starter
+import functions_lab05_solution
 
 # Game Flow
 # Define two Dice
@@ -14,8 +14,6 @@ weapons = ["Fist", "Knife", "Club", "Gun", "Bomb", "Nuclear Bomb"]
 
 # Define the Loot
 loot_options = ["Health Potion", "Poison Potion", "Secret Note", "Leather Boots", "Flimsy Gloves"]
-good_loot_options = ["Health Potion", "Leather Boots"]
-bad_loot_options = ["Poison Potion"]
 belt = []
 
 # Define the Monster's Powers
@@ -114,37 +112,27 @@ if not input_invalid:
     print("    |    Player rolled " + str(m_health_points) + " health points for the monster")
 
     # Collect Loot
-    print("!!You find a loot bag!! You look inside to find 2 items:")
-    input("Roll for first item (Press enter)")
-    lootRoll = random.choice(range(1, len(loot_options) + 1))
-    loot = loot_options.pop(lootRoll - 1)
-    belt.append(loot)
-    print("Your belt: ", belt)
+    print("    ------------------------------------------------------------------")
+    print("    |    !!You find a loot bag!! You look inside to find 2 items:")
+    print("    |", end="    ")
+    input("Roll for first item (enter)")
 
-    # Second time Collecting Loot
-    input("Roll for second item (Press enter)")
-    lootRoll = random.choice(range(1, len(loot_options) + 1))
-    loot = loot_options.pop(lootRoll - 1)
-    belt.append(loot)
-    print("Your belt: ", belt)
-
-    # Organize Belt
-    print("You're super neat, so you organize your belt alphabetically:")
-    belt.sort()
-    print("Your belt: ", belt)
-
-    # Use Loot
-    print("!!You see a monster in the distance! So you quickly use your first item:")
-    first_item = belt.pop(0)
-    if first_item in good_loot_options:
-        health_points = min(6, (health_points + 2))
-        print("You used " + first_item + " to up your health to " + str(health_points))
-    elif first_item in bad_loot_options:
-        health_points = max(0, (health_points - 2))
-        print("You used " + first_item + " to hurt your health to " + str(health_points))
-    else:
-        print("You used " + first_item + " but it's not helpful")                   
+    # Lab 5 - Question 4: Collect Loot First time
     
+    print("    ------------------------------------------------------------------")
+    print("    |", end="    ")
+    input("Roll for second item (Press enter)")
+
+    # Lab 5 - Question 4: Collect Loot Second time
+    
+
+    print("    |    You're super neat, so you organize your belt alphabetically:")
+    belt.sort()
+    print("    |    Your belt: ", belt)
+
+    ## Lab 5 - Question 4: Use Loot
+    
+
     print("    ------------------------------------------------------------------")
     print("    |", end="    ")
     input("Analyze the roll (Press enter)")
@@ -180,22 +168,65 @@ if not input_invalid:
     print("    |    The monster's combat strength is now " + str(
         m_combat_strength) + " using the " + power_roll + " magic power")
 
+    # Lab 5: Call Recursive function
+    print("    |", end="    ")
+    num_dream_lvls = input("How many dream levels do you want to go down?")
+    if num_dream_lvls != 0:
+        health_points -= 1
+        crazy_level = functions_lab05_solution.inception_dream(num_dream_lvls)
+        combat_strength += crazy_level
+        print("combat strength: " + str(combat_strength))
+        print("health points: " + str(health_points))
+
     # Fight Sequence
     # Loop while the monster and the player are alive. Call fight sequence functions
-    print("You meet the monster. FIGHT!!")
+    print("    ------------------------------------------------------------------")
+    print("    |    You meet the monster. FIGHT!!")
     while m_health_points > 0 and health_points > 0:
+        # Fight Sequence
+        print("    |", end="    ")
 
-        input("You strike first (Press Enter)")
-        m_health_points = functions_lab05_starter.hero_attacks(combat_strength, m_health_points)
-        if m_health_points == 0:
-            num_stars = 3
+        # Lab 5: Question 5:
+        input("Roll to see who strikes first (Press Enter)")
+        # Lab 5: Question 5
+        if not (attack_roll % 2 == 0):
+            print("    |", end="    ")
+            input("You strike (Press enter)")
+            # Lab 5: Question 5
+            if m_health_points == 0:
+                num_stars = 3
+            else:
+                print("    |", end="    ")
+                print("------------------------------------------------------------------")
+                input("    |    The monster strikes (Press enter)!!!")
+                # # Lab 5: Question 5
+                if health_points == 0:
+                    num_stars = 1
+                else:
+                    num_stars = 2
         else:
-            input("The monster strikes (Press Enter)")
-            health_points = functions_lab05_starter.monster_attacks(m_combat_strength, health_points)
+            print("    |", end="    ")
+            input("The Monster strikes (Press enter)")
+            # Lab 5: Question 5
             if health_points == 0:
                 num_stars = 1
             else:
-                num_stars = 2
+                print("    |", end="    ")
+                print("------------------------------------------------------------------")
+                input("The hero strikes!! (Press enter)")
+                # Lab 5: Question 5
 
-    stars = "*" * num_stars
-    print("Hero gets <" + stars + "> stars")
+
+    # Final Score Display
+    tries = 0
+    input_invalid = True
+    while input_invalid and tries in range(5):
+        print("    |", end="    ")
+
+        # Lab 5 - Question 1: 
+        
+
+    if not input_invalid:
+        stars_display = "*" * num_stars
+        # Lab 5 - Question 2: 
+        
