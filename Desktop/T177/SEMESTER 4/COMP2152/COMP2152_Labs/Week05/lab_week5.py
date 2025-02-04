@@ -119,14 +119,13 @@ if not input_invalid:
 
     # Lab 5 - Question 4: Collect Loot First time
     loot_options, belt = functions_lab05.collect_loot(loot_options, belt)
-
     print("    ------------------------------------------------------------------")
     print("    |", end="    ")
     input("Roll for second item (Press enter)")
 
     # Lab 5 - Question 4: Collect Loot Second time
     loot_options, belt = functions_lab05.collect_loot(loot_options, belt)
-    
+
     print("    |    You're super neat, so you organize your belt alphabetically:")
     belt.sort()
     print("    |    Your belt: ", belt)
@@ -188,13 +187,17 @@ if not input_invalid:
         print("    |", end="    ")
 
         # Lab 5: Question 5:
-        input("Roll to see who strikes first (Press Enter)")
+        input("Roll to see who strikes first (Press Enter)") 
+
+        
+          
         # Lab 5: Question 5
-        attack_roll = random.choice([1,2,3,4,5,6])
-        if attack_roll in [1,2,3]:
+        attack_roll = random.choice([1, 2, 3, 4, 5, 6])
+        if attack_roll in [1, 2, 3]:
             print("Hero attacks first!")
         else:
             print("Monster attacks first!")
+
 
         if not (attack_roll % 2 == 0):
             print("    |", end="    ")
@@ -234,22 +237,20 @@ if not input_invalid:
         hero_name = input("Enter Hero's name (in two words)")
         name = hero_name.split()
         if len(name) != 2:
-            print("    |    Please enter a name with two parts (seperated by space)")
-            tries = tries + 1
+            print("    |    Please enter a name with two parts (separated by a space)")
+            tries += 1
         else:
-            if not name[0].isalpha+ name[1].isalpha:
+            if not name[0].isalpha() + name[1].isalpha:
                 print("    |    Please enter an alphabetical name")
                 tries += 1
             else:
-                short_name = name[0][0:2:1] + name[1][0:1:1]
+                short_name = name[0][0:2:1] + name[0][0:1:1]
                 print("    |    I'm going to call you " + short_name + " for short")
                 input_invalid = False
 
-        
+
 
     if not input_invalid:
         stars_display = "*" * num_stars
-        # Lab 5 - Question 2: 
+        # Lab 5 - Question 2:
         print("    |    Hero " + short_name + " gets <" + stars_display + "> starts")
-
-        
