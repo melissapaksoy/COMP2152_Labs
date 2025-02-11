@@ -138,6 +138,10 @@ def inception_dream(num_dream_lvls):
         return 1 + int(inception_dream(num_dream_lvls - 1))
 
 # Lab 06 - Question 3 and 4
+def save_game(winner, hero_name="", num_starts= 0);
+    with open("save.txt", "a") as file:
+        if winner == "Hero";
+            file.write(f"Hero {hero_name} has killed the monster with {num_starts} stars.\n") 
 
 # Lab 06 - Question 5a
 
