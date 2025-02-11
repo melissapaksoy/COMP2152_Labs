@@ -3,7 +3,6 @@ import random
 
 # Put all the functions into another file and import them
 import functions_lab06
-
 # Game Flow
 # Define two Dice
 small_dice_options = list(range(1, 7))
@@ -85,7 +84,6 @@ if not input_invalid:
 
     # Lab 06 - Question 5b
     functions_lab06.adjust_combat_strength(combat_strength, m_combat_strength)
-    
     # Weapon Roll Analysis
     print("    ------------------------------------------------------------------")
     print("    |", end="    ")
@@ -170,7 +168,7 @@ if not input_invalid:
     m_combat_strength += min(6, m_combat_strength + monster_powers[power_roll])
     print("    |    The monster's combat strength is now " + str(
         m_combat_strength) + " using the " + power_roll + " magic power")
-
+    
     # Lab 06 - Question 6
     num_dream_lvls = -1
     while (num_dream_lvls < 0 or num_dream_lvls > 3):
@@ -179,10 +177,10 @@ if not input_invalid:
         num_dream_lvls = input("How many dream levels do you want to go down?")
         if ((num_dream_lvls=="")):
             num_dream_lvls = -1
-            print("Number entered must be a whole number between 0-3 inclusive, try again")
+            print("Number entered must be a whole number between 0-3 inclusive, try again.")
         else:
             num_dream_lvls = int(num_dream_lvls)
-            if ((num_dream_lvls < 0 ) or (num_dream_lvls > 3)):
+            if ((num_dream_lvls < 0) or (num_dream_lvls > 3)):
                 num_dream_lvls = -1
                 print("Number entered must be a whole number between 0-3 inclusive, try again.")
             elif (not num_dream_lvls == 0):
@@ -191,7 +189,7 @@ if not input_invalid:
                 combat_strength += crazy_level
                 print("combat strength: " + str(combat_strength))
                 print("health points: " + str(health_points))
-        print("num_dreams_lvls: ", num_dream_lvls)
+        print("num_dream_lvls: ", num_dream_lvls)       
 
     # Fight Sequence
     # Loop while the monster and the player are alive. Call fight sequence functions
@@ -234,7 +232,11 @@ if not input_invalid:
                     num_stars = 3
                 else:
                     num_stars = 2
-
+    # Lab 06 - Question 3 and 4
+    if (m_health_points <= 0):
+        winner = "Hero"
+    else:
+        winner = "Monster"        
     # Final Score Display
     tries = 0
     input_invalid = True
@@ -258,3 +260,5 @@ if not input_invalid:
     if not input_invalid:
         stars_display = "*" * num_stars
         print("    |    Hero " + short_name + " gets <" + stars_display + "> stars")
+        # Lab 06 - Question 3 and 4
+        functions_lab06.save_game(winner, hero_name=short_name, num_starts=num_stars)
