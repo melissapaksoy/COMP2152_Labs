@@ -121,20 +121,20 @@ if not input_invalid:
     input("Roll for first item (enter)")
 
     # Collect Loot First time
-    loot_options, belt = functions_lab06_starter.collect_loot(loot_options, belt)
+    loot_options, belt = functions_lab06.collect_loot(loot_options, belt)
     print("    ------------------------------------------------------------------")
     print("    |", end="    ")
     input("Roll for second item (Press enter)")
 
     # Collect Loot Second time
-    loot_options, belt = functions_lab06_starter.collect_loot(loot_options, belt)
+    loot_options, belt = functions_lab06.collect_loot(loot_options, belt)
 
     print("    |    You're super neat, so you organize your belt alphabetically:")
     belt.sort()
     print("    |    Your belt: ", belt)
 
     # Use Loot
-    belt, health_points = functions_lab06_starter.use_loot(belt, health_points)
+    belt, health_points = functions_lab06.use_loot(belt, health_points)
 
     print("    ------------------------------------------------------------------")
     print("    |", end="    ")
@@ -170,7 +170,6 @@ if not input_invalid:
     m_combat_strength += min(6, m_combat_strength + monster_powers[power_roll])
     print("    |    The monster's combat strength is now " + str(
         m_combat_strength) + " using the " + power_roll + " magic power")
-    
 
     # Lab 06 - Question 6
     num_dream_lvls = -1
@@ -208,14 +207,14 @@ if not input_invalid:
         if not (attack_roll % 2 == 0):
             print("    |", end="    ")
             input("You strike (Press enter)")
-            m_health_points = functions_lab06_starter.hero_attacks(combat_strength, m_health_points)
+            m_health_points = functions_lab06.hero_attacks(combat_strength, m_health_points)
             if m_health_points == 0:
                 num_stars = 3
             else:
                 print("    |", end="    ")
                 print("------------------------------------------------------------------")
                 input("    |    The monster strikes (Press enter)!!!")
-                health_points = functions_lab06_starter.monster_attacks(m_combat_strength, health_points)
+                health_points = functions_lab06.monster_attacks(m_combat_strength, health_points)
                 if health_points == 0:
                     num_stars = 1
                 else:
@@ -223,14 +222,14 @@ if not input_invalid:
         else:
             print("    |", end="    ")
             input("The Monster strikes (Press enter)")
-            health_points = functions_lab06_starter.monster_attacks(m_combat_strength, health_points)
+            health_points = functions_lab06.monster_attacks(m_combat_strength, health_points)
             if health_points == 0:
                 num_stars = 1
             else:
                 print("    |", end="    ")
                 print("------------------------------------------------------------------")
                 input("The hero strikes!! (Press enter)")
-                m_health_points = functions_lab06_starter.hero_attacks(combat_strength, m_health_points)
+                m_health_points = functions_lab06.hero_attacks(combat_strength, m_health_points)
                 if m_health_points == 0:
                     num_stars = 3
                 else:
