@@ -161,3 +161,16 @@ def loadd_game():
 
 
 # Lab 06 - Question 5b
+def adjust_combat_strength(combat_strength, m_combat_strength):
+    last_game = load_game()
+    if last_game:
+        if "Hero" in last_game and "gained" in last_game:
+            num_starts = int(last_game.split()[-2])
+            if num_starts > 3:
+                print(" Increasing the monster's combat strength since Hero won so easily last game")
+                m_combat_strength += 1
+            elif "Monster killed the" in last_game:
+                combat_strength += 1
+                print("Increasing Hero's combat strength since you lost last game")
+            else:
+                print("    |   ...Based on your previous game, neither the hero nor the monster's combat strength will be increased.")
