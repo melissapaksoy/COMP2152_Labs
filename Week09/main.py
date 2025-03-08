@@ -19,6 +19,7 @@ i = 0
 while not input_valid and i in range(5):
     try:
         combat_strength = input("Enter your combat Strength (1-6): ")
+
         # Validate input: Check if the string inputted is numeric
         if not combat_strength.isnumeric():
             # If one of the inputs are invalid, print error message and halt
@@ -34,7 +35,8 @@ while not input_valid and i in range(5):
         else:
             input_valid = True
     except ValueError:
-        print("Exeption: Invalid input.")
+        print("Exception: Invalid input. Player needs to enter an integer number")
+
 
 m_input_valid = False
 
@@ -55,8 +57,8 @@ while not m_input_valid and i in range(5):
             i = i + 1
         else:
             m_input_valid = True
-    except ValueError: 
-        print("Exeption: Invalid input.")   
+    except:
+        print("Exception: Invalid input. Monster needs to enter an integer number")
 
 
 if input_valid and m_input_valid:
@@ -80,10 +82,9 @@ m_health_points = random.choice(big_dice_options)
 print("Player rolled " + str(m_health_points) + " health points for the monster")
 
 try:
-    m_health_points = function.hero_attacks("string1", "string2")
+    m_health_points = function.hero_attacks("string 1", "string 2")
 except TypeError as te:
-    print("Error Class:" + str(te))
-
+    print("Error Class: "+ str(te))
 # Loop while the monster and the player are alive. Call fight sequence functions
 while m_health_points > 0 and health_points > 0:
     # Fight Sequence
@@ -93,11 +94,17 @@ while m_health_points > 0 and health_points > 0:
     if not (attack_roll % 2 == 0):
         input("You strike (Press enter)")
         # Hero Attacks First
+        try:
+            health_points = function.hero_attacks(m_combat_strength, health_points)
+            if m_health_points != 0:
+                input("The monster strikes (Press enter)!!!")
+                # Monster Attacks Back
+                health_points = function.monster_attacks(m_combat_strength, health_points)
+
+        except ValueError:
+            print("Exception: Invalid input. Player needs to enter an integer number")
         m_health_points = function.hero_attacks(combat_strength, m_health_points)
-        if m_health_points != 0:
-            input("The monster strikes (Press enter)!!!")
-            # Monster Attacks Back
-            health_points = function.monster_attacks(m_combat_strength, health_points)
+
 
     else:
         # Monster Attacks First
