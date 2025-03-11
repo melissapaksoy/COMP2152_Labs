@@ -28,4 +28,32 @@ try:
             except Exception as e:            
                 print(f"Error executing query_2: {e}")
 except sqlite3.Error as e:    
-    print(f"Database connection error: {e}")
+    print(f"Database connection error: {e}")with closing(sqlite3.connect(db_path)) as db_con:
+    db_con.row_factory = sqlite3.Row 
+    with closing(db_con.cursor()) as cursor:
+        try:
+            query_1 = "SELECT * FROM demo WHERE id > 14"
+            cursor.execute(query_1)
+            rows = cursor.fetchall()
+            print("Name of rows with id > 14:")
+            for row in rows:
+                print(row["name"])
+        except sqlite3.Error as e:
+            print(f"Error executing query_1: {e}")
+        try:
+            del_row = int(input("Enter the row ID threshold for deletion:"))
+            query_2 = "DELETE FROM demo WHERE id < ?"
+            cursor.execute(query_2, (del_row,))
+            num_rows = cursor.rowcount
+            print(f"{num_rows} rows affected. Are you sure you want to continue?")
+            confirm = input("Enter 'yes' to confirm deletion: ")
+            if confirm.lower() == 'yes':
+                db_con.commit()
+                print("Deletion confirmed and committed.")
+            else:
+                db_con.rollback()
+                print("Deletion cancelled.")
+        except sqlite3.Error as e:
+            print(f"Error executing query_2: {e}")
+        except ValueError as e:
+            print(f"Invalid input: {e}")
